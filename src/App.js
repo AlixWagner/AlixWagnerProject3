@@ -20,7 +20,7 @@ function App() {
     characterName
       ? setShowCharacterInfo(true)
       : setShowCharacterInfo(false)
-  }, [ characterAlignment ])
+  }, [ characterName ])
 
   // useEffect(() => {
   //   showCharacterInfo
