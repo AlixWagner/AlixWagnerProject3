@@ -66,6 +66,8 @@ const CharacterClassInfo = (props) => {
                                             </ul>
                                         </li>
                                     )
+                                } else {
+                                    return null
                                 }
                             })
                         }
