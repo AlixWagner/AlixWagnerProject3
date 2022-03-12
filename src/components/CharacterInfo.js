@@ -4,10 +4,9 @@ import CharacterRaceInfo from "./CharacterRaceInfo";
 const CharacterInfo = (props) => {
 
 
-
     return (
         <section>
-            {props.name ?
+            {props.loaded ?
                 <>
                     <h2>{ props.name }</h2>
                     <CharacterClassInfo infoObject={props.class} />

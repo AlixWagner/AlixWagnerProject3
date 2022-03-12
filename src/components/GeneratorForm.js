@@ -34,25 +34,37 @@ const GeneratorForm = (props) => {
         }).then((returnedName) => {
             setRandomNameArray(returnedName.data.contents.names)
             setRandomName(returnedName.data.contents.names[5])
-        });
+        }).catch((error) => {
+            alert(error)
+        })
         // character classes:
         axios({
             url: "https://www.dnd5eapi.co/api/classes",
         }).then((returned) => {
             setCharacterClassArray(returned.data.results);
-        });
+        }).catch((error) => {
+            alert(error)
+        })
         // character races:
         axios({
             url: "https://www.dnd5eapi.co/api/races",
         }).then((returned) => {
             setCharacterRaceArray(returned.data.results);
-        });
+        }).catch((error) => {
+            alert(error)
+        })
         // character alignments:
         axios({
             url: "https://www.dnd5eapi.co/api/alignments",
         }).then((returned) => {
             setAlignmentArray(returned.data.results)
-        });
+        }).catch((error) => {
+            alert(error)
+        })
+
+        return () => {
+            axios.isCancel()
+        }
     // run calls only on load:
     }, [])
 
