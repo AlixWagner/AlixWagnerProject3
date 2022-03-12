@@ -1,10 +1,18 @@
 const randomFromArray = ( array, setChoice ) => {
     const randomIndex = Math.floor(Math.random() * array.length);
     const randomChoice = array[randomIndex];
-    if (randomChoice.index) {
-        setChoice(randomChoice.index)
+    if (setChoice) {
+        if (randomChoice.index) {
+            setChoice(randomChoice.index)
+        } else {
+            setChoice(randomChoice)
+        }
     } else {
-        setChoice(randomChoice)
+        if (randomChoice.index) {
+            return (randomChoice.index)
+        } else {
+            return (randomChoice)
+        }
     }
 }
 

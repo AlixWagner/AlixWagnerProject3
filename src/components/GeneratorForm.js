@@ -66,9 +66,39 @@ const GeneratorForm = (props) => {
         randomFromArray(alignmentArray, setCharacterAlignment)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let currentName = characterName;
+        let currentClass = characterClass;
+        let currentRace = characterRace;
+        let currentAlignment = characterAlignment;
+
+        if (!characterName) {
+            currentName = randomFromArray(randomNameArray)
+            setCharacterName(currentName)
+        }
+        if (characterClass === "placeholder") {
+            currentClass = randomFromArray(characterClassArray)
+            setCharacterClass(currentClass)
+        }
+        if (characterRace === "placeholder") {
+            currentRace = randomFromArray(characterRaceArray)
+            setCharacterRace(currentRace)
+        }
+        if (characterAlignment === "placeholder") {
+            currentAlignment = randomFromArray(alignmentArray)
+            setCharacterAlignment(currentAlignment)
+        }
+
+        props.onSubmit(currentName, currentClass, currentRace, currentAlignment)
+
+    }
+
+    // onSubmit={(e) => { props.onSubmit(e, characterName, characterClass, characterRace, characterAlignment) }}
 
     return (
-        <form onSubmit={(e) => { props.onSubmit(e, characterName, characterClass, characterRace, characterAlignment) }}>
+        <form>
             <label htmlFor="characterName">Character Name</label>
             <input id="characterName" type="text" onChange={ function(event) { setCharacterName(event.target.value) }} value={ characterName }></input>
 
@@ -97,12 +127,11 @@ const GeneratorForm = (props) => {
             />
 
 
-
-
             <button type="button" onClick={ handleRandom } >
                 Randomize
             </button>
-            <button>
+
+            <button onClick={ handleSubmit }>
                 Create Character
             </button>
         </form>
