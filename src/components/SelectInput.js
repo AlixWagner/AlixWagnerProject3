@@ -2,7 +2,6 @@
 const SelectInput = (props) => {
 
     const handleChange = (event) => {
-        console.log(event.target)
         props.setUserInput(event.target.value);
     }
 

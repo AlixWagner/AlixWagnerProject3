@@ -34,25 +34,37 @@ const GeneratorForm = (props) => {
         }).then((returnedName) => {
             setRandomNameArray(returnedName.data.contents.names)
             setRandomName(returnedName.data.contents.names[5])
-        });
+        }).catch((error) => {
+            alert(error)
+        })
         // character classes:
         axios({
             url: "https://www.dnd5eapi.co/api/classes",
         }).then((returned) => {
             setCharacterClassArray(returned.data.results);
-        });
+        }).catch((error) => {
+            alert(error)
+        })
         // character races:
         axios({
             url: "https://www.dnd5eapi.co/api/races",
         }).then((returned) => {
             setCharacterRaceArray(returned.data.results);
-        });
+        }).catch((error) => {
+            alert(error)
+        })
         // character alignments:
         axios({
             url: "https://www.dnd5eapi.co/api/alignments",
         }).then((returned) => {
             setAlignmentArray(returned.data.results)
-        });
+        }).catch((error) => {
+            alert(error)
+        })
+
+        return () => {
+            axios.isCancel()
+        }
     // run calls only on load:
     }, [])
 
@@ -66,9 +78,39 @@ const GeneratorForm = (props) => {
         randomFromArray(alignmentArray, setCharacterAlignment)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let currentName = characterName;
+        let currentClass = characterClass;
+        let currentRace = characterRace;
+        let currentAlignment = characterAlignment;
+
+        if (!characterName) {
+            currentName = randomFromArray(randomNameArray)
+            setCharacterName(currentName)
+        }
+        if (characterClass === "placeholder") {
+            currentClass = randomFromArray(characterClassArray)
+            setCharacterClass(currentClass)
+        }
+        if (characterRace === "placeholder") {
+            currentRace = randomFromArray(characterRaceArray)
+            setCharacterRace(currentRace)
+        }
+        if (characterAlignment === "placeholder") {
+            currentAlignment = randomFromArray(alignmentArray)
+            setCharacterAlignment(currentAlignment)
+        }
+
+        props.onSubmit(currentName, currentClass, currentRace, currentAlignment)
+
+    }
+
+    // onSubmit={(e) => { props.onSubmit(e, characterName, characterClass, characterRace, characterAlignment) }}
 
     return (
-        <form onSubmit={(e) => { props.onSubmit(e, characterName, characterClass, characterRace, characterAlignment) }}>
+        <form>
             <label htmlFor="characterName">Character Name</label>
             <input id="characterName" type="text" onChange={ function(event) { setCharacterName(event.target.value) }} value={ characterName }></input>
 
@@ -97,12 +139,11 @@ const GeneratorForm = (props) => {
             />
 
 
-
-
             <button type="button" onClick={ handleRandom } >
                 Randomize
             </button>
-            <button>
+
+            <button onClick={ handleSubmit }>
                 Create Character
             </button>
         </form>
