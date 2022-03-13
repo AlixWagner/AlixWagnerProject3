@@ -1,5 +1,6 @@
-import CharacterClassInfo from "./CharacterClassInfo"
+import CharacterClassInfo from "./CharacterClassInfo";
 import CharacterRaceInfo from "./CharacterRaceInfo";
+import CharacterAlignment from "./CharacterAlignment";
 
 const CharacterInfo = (props) => {
 
@@ -8,9 +9,9 @@ const CharacterInfo = (props) => {
         <section>
             {props.loaded ?
                 <>
-                    <h2>{ props.name }</h2>
-                    <CharacterClassInfo infoObject={props.class} />
+                    <CharacterAlignment infoObject={props.alignment} name={props.name} />
                     <CharacterRaceInfo infoObject={props.race} />
+                    <CharacterClassInfo infoObject={props.class} />
                 </> :
                 null
             }

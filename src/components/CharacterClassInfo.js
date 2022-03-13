@@ -5,7 +5,6 @@ const CharacterClassInfo = (props) => {
     const currentClass = props.infoObject;
     
     console.log(currentClass)
-
     
     return (
         <section className="classSection">
@@ -34,8 +33,8 @@ const CharacterClassInfo = (props) => {
                         currentClass.proficiency_choices.map((choice) => {
                             return (
                                 <>
-                                    <p>Choose {choice.choose} From Below:</p>
-                                    <ul>
+                                    <p className="chooseOptionLabel">Choose {choice.choose} From Below:</p>
+                                    <ul className="choiceList">
                                         {
                                             liFromArray(choice.from)
                                         }
@@ -47,31 +46,31 @@ const CharacterClassInfo = (props) => {
                 </div>
                 
                 <div className="spellcasting">
-                    <h4>Spellcasting</h4>
-                    <ul>
-                        {
-                            currentClass.spellcasting.info.map((each) => {
-                                if (each.name === "Cantrips" || each.name === "Spellcasting Ability") {
-                                    return (
-                                        <li>
-                                            <h5>{each.name}</h5>
-                                            <ul>
-                                                {
-                                                    each.desc.map((description) => {
-                                                        return (
-                                                            <p>{description}</p>
-                                                        )
-                                                    })
-                                                }
-                                            </ul>
-                                        </li>
-                                    )
-                                } else {
-                                    return null
-                                }
-                            })
-                        }
-                    </ul>
+                    <h4>Spellcasting <span className="abilityType">{currentClass.spellcasting.spellcasting_ability ? currentClass.spellcasting.spellcasting_ability.name : null } </span></h4>
+                    {
+                        currentClass.spellcasting.info[0] 
+                            ? <ul> 
+                                { currentClass.spellcasting.info.map((each) => {
+                                    if (each.name === "Cantrips" || each.name === "Spellcasting Ability") {
+                                        return (
+                                            <li>
+                                                <h5>{each.name}</h5>
+                                                <ul>
+                                                    {
+                                                        each.desc.map((description) => {
+                                                            return (
+                                                                <p>{description}</p>
+                                                            )
+                                                        })
+                                                    }
+                                                </ul>
+                                            </li>
+                                        )
+                                    }
+                                }) } 
+                            </ul>
+                            : <p className="noChoice">No Spellcasting for {currentClass.name} </p>
+                    }
                 </div>
 
                 <div className="classEquipment">
@@ -94,8 +93,8 @@ const CharacterClassInfo = (props) => {
                         currentClass.starting_equipment_options.map((choice) => {
                             return (
                                 <>
-                                    <p>Choose {choice.choose} From Below:</p>
-                                    <ul>
+                                    <p className="chooseOptionLabel">Choose {choice.choose} From Below:</p>
+                                    <ul className="choiceList">
                                         {/* THIS INFO IS FUCKED  */}
                                         {/* Needs to be parsed more intricately because 
                                         FOR EXAMPLE: Rangers can choose between 2x shortswords or the option of 2 martial weapons of their choice THEREFORE sometimes option.equipment and sometimes option.equipment_category */}
