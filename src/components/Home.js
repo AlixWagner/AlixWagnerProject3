@@ -65,6 +65,7 @@ function Home() {
             <header>
                 <div className='wrapper'>
                     <h1>Character Generator</h1>
+                    <p className='instructions'><span className='note'>Note:</span> any values left blank will be set randomly</p>
                 </div>
             </header>
 

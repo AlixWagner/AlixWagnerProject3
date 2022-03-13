@@ -16,7 +16,9 @@ li {
 }
 a {
     text-decoration: none;
-    color: red;
+}
+img {
+    max-width: 100%;;
 }
 /* GENERAL PAGE STYLING */
 .wrapper {
@@ -32,7 +34,16 @@ html {
 /* HEADER STYLING */
 nav .wrapper {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+nav .imgContainer {
+    width: 100px;
+    position: relative;
+}
+nav img {
+    position: relative;
+    left: -20px;
+    top: -5px;
 }
 nav ul {
     display: flex;
@@ -44,7 +55,7 @@ form {
     padding: 30px 40px;
     border-radius: 5px;;
     background-color: #81415c;
-    border: 3px solid #c78864;
+    border: 3px solid #9e5c77;
 }
 form .inputContainer {
     display: flex;
@@ -82,7 +93,7 @@ form input {
 }
 form input:active,
 form input:focus {
-    outline: 3px solid #231118;
+    outline: 3px solid #462633;
     border-radius: 2px;
     box-shadow: none;
 }
@@ -98,7 +109,7 @@ form select {
 }
 form select:active,
 form select:focus {
-    outline: 3px solid #231118;
+    outline: 3px solid #462633;
     border-radius: 2px;
     box-shadow: none;
 }
@@ -114,15 +125,51 @@ form .buttonContainer {
     display: flex;
     justify-content: flex-end;
 }
-button {
+button, .navButton {
     cursor: pointer;
+    color:#231118;
     padding: 5px 30px;
     margin-left: 20px;
     border-radius: 4px;
-    border: none;
-    background-color: #af778e;
+    border: 3px solid #c0819c;
+    background-color: #c0819c;
+    transition: 0.6s;
 }
-
-button.primary {
+.navButton {
+    font-size: 0.9rem;
+    padding: 5px 20px;
+    margin-left: 10px;
+    border: 3px solid #885067;
+    background-color: #885067;
+}
+button:hover,
+button:focus,
+button:active {
+    background-color: #c76f93;
+    box-shadow: none;
+    border: 3px solid #ae5f80;
+    outline: none;
+}
+.navButton:hover,
+.navButton:focus,
+.navButton:active {
+    background-color:#a34f72;
+    border: 3px solid #924364;
+}
+button.primary, .navButton.primary {
     background-color: #cc6f55;
+    border: 3px solid #cc6f55;
+}
+.navButton.primary {
+    background-color: #b1624c;
+    border: 3px solid #b1624c;
+}
+button.primary:hover,
+button.primary:focus,
+button.primary:active,
+.navButton.primary:hover,
+.navButton.primary:focus,
+.navButton.primary:active {
+    background-color: #d36019;
+    border: 3px solid #b34f36;
 }
