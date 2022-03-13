@@ -70,24 +70,27 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <GeneratorForm onSubmit={ handleGeneratorFormSubmit } />
-      </div>
 
-      <div> 
-        {
-          showCharacterInfo 
-            ? <CharacterInfo
-              name={characterName}
-              alignment={characterAlignment}
-              class={characterClass}
-              race={characterRace}
-              loaded={ loaded }
+      <main>
+        <section className='formSection'>
+          <GeneratorForm onSubmit={handleGeneratorFormSubmit} />
+        </section>
+
+        <>
+          {
+            showCharacterInfo
+              ? <CharacterInfo
+                name={characterName}
+                alignment={characterAlignment}
+                class={characterClass}
+                race={characterRace}
+                loaded={loaded}
               />
-            : null
-        }
-      </div>
-
+              : null
+          }
+        </>
+      </main>
+      
     </div>
   );
 }

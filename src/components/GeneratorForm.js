@@ -110,43 +110,45 @@ const GeneratorForm = (props) => {
     // onSubmit={(e) => { props.onSubmit(e, characterName, characterClass, characterRace, characterAlignment) }}
 
     return (
-        <form>
-            <label htmlFor="characterName">Character Name</label>
-            <input id="characterName" type="text" onChange={ function(event) { setCharacterName(event.target.value) }} value={ characterName }></input>
+        <div className="wrapper">
+            <form>
+                <label htmlFor="characterName">Character Name</label>
+                <input id="characterName" type="text" onChange={function (event) { setCharacterName(event.target.value) }} value={characterName}></input>
 
-            <SelectInput 
-                id="characterClass" 
-                label="Class" 
-                options={characterClassArray}
-                userInput={ characterClass }
-                setUserInput={ setCharacterClass }
-            />
+                <SelectInput
+                    id="characterClass"
+                    label="Class"
+                    options={characterClassArray}
+                    userInput={characterClass}
+                    setUserInput={setCharacterClass}
+                />
 
-            <SelectInput
-                id="characterRace"
-                label="Race"
-                options={characterRaceArray}
-                userInput={characterRace}
-                setUserInput={ setCharacterRace }
-            />
+                <SelectInput
+                    id="characterRace"
+                    label="Race"
+                    options={characterRaceArray}
+                    userInput={characterRace}
+                    setUserInput={setCharacterRace}
+                />
 
-            <SelectInput
-                id="characterAlignment"
-                label="Alignment"
-                options={alignmentArray}
-                userInput={characterAlignment}
-                setUserInput={setCharacterAlignment}
-            />
+                <SelectInput
+                    id="characterAlignment"
+                    label="Alignment"
+                    options={alignmentArray}
+                    userInput={characterAlignment}
+                    setUserInput={setCharacterAlignment}
+                />
 
 
-            <button type="button" onClick={ handleRandom } >
-                Randomize
-            </button>
+                <button type="button" onClick={handleRandom} >
+                    Randomize
+                </button>
 
-            <button onClick={ handleSubmit }>
-                Create Character
-            </button>
-        </form>
+                <button onClick={handleSubmit}>
+                    Create Character
+                </button>
+            </form>
+        </div>
     )
 }
 
