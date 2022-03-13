@@ -14,3 +14,115 @@ ul, li, p, h1, h2, h3, h4, h5 {
 li {
     list-style: none;
 }
+a {
+    text-decoration: none;
+    color: red;
+}
+/* GENERAL PAGE STYLING */
+.wrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+html {
+    background-color: #231118;
+    font-size: 125%;
+    color: white;
+}
+/* HEADER STYLING */
+nav .wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+/* FORM STYLING */
+form {
+    margin: 10px 0 40px;
+    padding: 30px 40px;
+    border-radius: 5px;;
+    background-color: #81415c;
+    border: 3px solid #c78864;
+}
+form .inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+form .inputContainer label {
+    margin: 15px 0 10px;
+}
+form .selectContainer {
+    position: relative;
+    background-color: #e6e6e6;
+    width: auto;
+    float: left;
+    max-width: 100%;
+    border-radius: 2px;
+}
+form .selectContainer:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
+    right: 8px;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #aaa;
+}
+form input {
+    background-color: #e6e6e6;
+    font-family: "helvetica neue", helvetica;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    border-radius: 2px;
+}
+form input:active,
+form input:focus {
+    outline: 3px solid #231118;
+    border-radius: 2px;
+    box-shadow: none;
+}
+form select {
+    font-family: "helvetica neue", helvetica;
+    width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+form select:active,
+form select:focus {
+    outline: 3px solid #231118;
+    border-radius: 2px;
+    box-shadow: none;
+}
+form .formSection {
+    display: flex;
+    justify-content: space-between;
+}
+form .inputContainer {
+    width: calc(50% - 15px)
+}
+form .buttonContainer {
+    margin: 40px 0 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+button {
+    cursor: pointer;
+    padding: 5px 30px;
+    margin-left: 20px;
+    border-radius: 4px;
+    border: none;
+    background-color: #af778e;
+}
+
+button.primary {
+    background-color: #cc6f55;
+}

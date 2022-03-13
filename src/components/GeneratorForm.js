@@ -112,41 +112,49 @@ const GeneratorForm = (props) => {
     return (
         <div className="wrapper">
             <form>
-                <label htmlFor="characterName">Character Name</label>
-                <input id="characterName" type="text" onChange={function (event) { setCharacterName(event.target.value) }} value={characterName}></input>
+                <div className="formSection firstLine">
+                    <div className="inputContainer">
+                        <label htmlFor="characterName">Character Name</label>
+                        <input id="characterName" type="text" onChange={function (event) { setCharacterName(event.target.value) }} value={characterName}></input>
+                    </div>
 
-                <SelectInput
-                    id="characterClass"
-                    label="Class"
-                    options={characterClassArray}
-                    userInput={characterClass}
-                    setUserInput={setCharacterClass}
-                />
+                    <SelectInput
+                        id="characterAlignment"
+                        label="Alignment"
+                        options={alignmentArray}
+                        userInput={characterAlignment}
+                        setUserInput={setCharacterAlignment}
+                    />
+                </div>
 
-                <SelectInput
-                    id="characterRace"
-                    label="Race"
-                    options={characterRaceArray}
-                    userInput={characterRace}
-                    setUserInput={setCharacterRace}
-                />
+                <div className="formSection secondLine">
+                    <SelectInput
+                        id="characterClass"
+                        label="Class"
+                        options={characterClassArray}
+                        userInput={characterClass}
+                        setUserInput={setCharacterClass}
+                    />
 
-                <SelectInput
-                    id="characterAlignment"
-                    label="Alignment"
-                    options={alignmentArray}
-                    userInput={characterAlignment}
-                    setUserInput={setCharacterAlignment}
-                />
+                    <SelectInput
+                        id="characterRace"
+                        label="Race"
+                        options={characterRaceArray}
+                        userInput={characterRace}
+                        setUserInput={setCharacterRace}
+                    />
+                </div>
 
 
-                <button type="button" onClick={handleRandom} >
-                    Randomize
-                </button>
+                <div className="buttonContainer">
+                    <button type="button" onClick={handleRandom} >
+                        Randomize
+                    </button>
 
-                <button onClick={handleSubmit}>
-                    Create Character
-                </button>
+                    <button className="primary" onClick={handleSubmit}>
+                        Create Character
+                    </button>
+                </div>
             </form>
         </div>
     )
