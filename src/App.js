@@ -27,10 +27,6 @@ function App() {
 
   }, [])
 
-  useEffect(() => {
-    console.log(characterList)
-  }, [currentCharacter])
-
   const setCharacter = (characterName, characterClass, characterRace, characterAlignment) => {
     setCurrentCharacter({ name: characterName, class: characterClass, race: characterRace, alignment: characterAlignment })
   }
