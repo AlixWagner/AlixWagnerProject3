@@ -7,8 +7,7 @@ const CharacterRaceInfo = (props) => {
     console.log(currentRace)
 
     return (
-        <section className="classSection">
-            <div className="wrapper">
+            <div className="raceSection">
                 <h3>{currentRace.name}</h3>
                 <div className="basicRaceInfo">
                     <h5>Movement Speed</h5>
@@ -108,7 +107,6 @@ const CharacterRaceInfo = (props) => {
                     }
                 </div>
             </div>
-        </section>
     )
 }
 

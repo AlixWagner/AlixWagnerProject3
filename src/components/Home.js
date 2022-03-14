@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import GeneratorForm from './GeneratorForm.js';
 import CharacterInfo from './CharacterInfo.js'
 
-function Home() {
+function Home(props) {
     const [showCharacterInfo, setShowCharacterInfo] = useState(false);
     const [characterName, setCharacterName] = useState("")
     const [characterClass, setCharacterClass] = useState({})
@@ -43,18 +43,18 @@ function Home() {
     // function to pass to the Form to:
     // Take  user input from GeneratorForm and store in state to pass to CharacterInfo
     // Hide GeneratorForm, Show Character Info
-    const handleGeneratorFormSubmit = (name, characterClass, race, alignment) => {
+    const handleGeneratorFormSubmit = (name, charClass, race, alignment) => {
         // make sure that no State changes occur during mount/dismount - stop CharacterInfo from accessing State:
         setLoaded(false);
         setCharacterName(name)
         // set variables for returned "promises":
-        const classPromise = apiCall("classes/", characterClass, setCharacterClass);
+        const classPromise = apiCall("classes/", charClass, setCharacterClass);
         const racePromise = apiCall("races/", race, setCharacterRace);
         const alignmentPromise = apiCall("alignments/", alignment, setCharacterAlignment);
         // collect the "promise" that API call was complete from all 3 calls:
         Promise.all([classPromise, racePromise, alignmentPromise])
             // ensure that all 3 API calls have returned before continuing:
-            .then(() => { setLoaded(true) })
+            .then(() => { setLoaded(true); props.setCharacter(name, charClass, race, alignment) })
     }
 
 
@@ -82,6 +82,7 @@ function Home() {
                                 alignment={characterAlignment}
                                 class={characterClass}
                                 race={characterRace}
+                                saveCharacter={ props.saveCharacter }
                                 loaded={loaded}
                             />
                             : null

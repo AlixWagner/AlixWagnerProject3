@@ -29,7 +29,7 @@ const GeneratorForm = (props) => {
             params: {
                 api_key: "ZMLPKWMnz0eG28IhK5PuLAeF",
                 category: "elf",
-                limit: 100
+                limit: 200
             }
         }).then((returnedName) => {
             setRandomNameArray(returnedName.data.contents.names)
