@@ -7,8 +7,7 @@ const CharacterClassInfo = (props) => {
     console.log(currentClass)
     
     return (
-        <section className="classSection">
-            <div className="wrapper">
+            <div className="classSection">
                 <h3>{currentClass.name}</h3>
                 <div className="basicClassInfo">
                     <p>Hit Dice: D{currentClass.hit_die}</p>
@@ -117,7 +116,6 @@ const CharacterClassInfo = (props) => {
                     }
                 </div>
             </div>
-        </section>
     )
 }
 

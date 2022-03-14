@@ -5,15 +5,13 @@ const CharacterAlignment = (props) => {
     console.log(props.infoObject)
 
     return (
-        <section className="basicCharacterSection">
-            <div className="wrapper">
+            <div className="basicCharacterSection">
                 <h2>{props.name}</h2>
                 <div className="alignmentSection">
                     <h4>{currentAlignment.name}</h4>
                     <p>{currentAlignment.desc}</p>
                 </div>
             </div>
-        </section>
     )
 }
 
