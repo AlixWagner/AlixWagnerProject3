@@ -21,7 +21,7 @@ const CharacterRaceInfo = (props) => {
                     }
                     <h5>Language Choices</h5>
                     {
-                        currentRace.language_options.choose
+                        currentRace.language_options
                             ? <>
                                 <p className="chooseOptionLabel">Choose {currentRace.language_options.choose} From Below:</p>
                                 <ul className="choiceList">
@@ -56,7 +56,7 @@ const CharacterRaceInfo = (props) => {
                     </ul>
                     <h5>Proficiency Choices</h5>
                     {
-                        currentRace.starting_proficiency_options.choose
+                        currentRace.starting_proficiency_options
                             ? <>
                                 <p className="chooseOptionLabel">Choose {currentRace.starting_proficiency_options.choose} From Below:</p>
                                 <ul className="choiceList">
@@ -87,7 +87,7 @@ const CharacterRaceInfo = (props) => {
                     }
                     <h5>Ability Bonus Choices</h5>
                     {
-                        currentRace.ability_bonus_options.choose
+                        currentRace.ability_bonus_options
                             ? <>
                                 <p className="chooseOptionLabel">Choose {currentRace.ability_bonus_options.choose} From Below:</p>
                                 <ul className="choiceList">

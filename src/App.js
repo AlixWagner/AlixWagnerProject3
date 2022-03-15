@@ -6,6 +6,7 @@ import logo from "./assets/d20-icon-34405.png"
 
 import Home from './components/Home';
 import Characters from './components/Characters';
+import Character from './components/Character';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setCharacter={ setCharacter } saveCharacter={ saveCharacter} />} />
         <Route path="/characters" element={<Characters savedCharacters={ characterList } />} />
+        <Route path="/characters/:characterKey" element={<Character />} />
       </Routes>
     </>
   )

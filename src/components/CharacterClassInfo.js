@@ -45,9 +45,9 @@ const CharacterClassInfo = (props) => {
                 </div>
                 
                 <div className="spellcasting">
-                    <h4>Spellcasting <span className="abilityType">{currentClass.spellcasting.spellcasting_ability ? currentClass.spellcasting.spellcasting_ability.name : null } </span></h4>
+                    <h4>Spellcasting <span className="abilityType">{currentClass.spellcasting ? currentClass.spellcasting.spellcasting_ability.name : null } </span></h4>
                     {
-                        currentClass.spellcasting.info[0] 
+                        currentClass.spellcasting 
                             ? <ul> 
                                 { currentClass.spellcasting.info.map((each) => {
                                     if (each.name === "Cantrips" || each.name === "Spellcasting Ability") {
