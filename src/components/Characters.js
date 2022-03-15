@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 function Characters(props) {
     
@@ -19,11 +20,13 @@ function Characters(props) {
                         currentCharacters[0] 
                         ? currentCharacters.map((character) => {
                             return (
-                                <li key={ character.key }>
-                                    <h4>{ character.info.name }</h4>
-                                    <p>{ character.info.alignment }</p>
-                                    <p>{ character.info.race } { character.info.class }</p>
-                                </li>
+                                <Link key={character.key} to={"/characters/" + character.key}>
+                                    <li >
+                                        <h4>{character.info.name}</h4>
+                                        <p>{character.info.alignment}</p>
+                                        <p>{character.info.race} {character.info.class}</p>
+                                    </li>
+                                </Link>
                             )
                         })
                         : null

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import GeneratorForm from './GeneratorForm.js';
 import CharacterInfo from './CharacterInfo.js'
 
+import apiCall from './apiCall.js';
+
 function Home(props) {
     const [showCharacterInfo, setShowCharacterInfo] = useState(false);
     const [characterName, setCharacterName] = useState("")
@@ -18,27 +20,6 @@ function Home(props) {
             : setShowCharacterInfo(false)
     }, [characterName])
 
-    const apiBaseUrl = "https://www.dnd5eapi.co/api/"
-
-    const apiCall = (parameter, chosen, setResult) => {
-        // establish URL based on form data:
-        const currentURL = apiBaseUrl + parameter + chosen
-
-        const axiosCallComplete = new Promise((resolve, reject) => {
-            axios({
-                url: currentURL,
-            }).then((returned) => {
-                // use returned data from API call to set State:
-                setResult(returned.data);
-                resolve();
-            }).catch((error) => {
-                alert(error);
-                reject();
-            })
-        })
-        // return promise that axios call was complete
-        return axiosCallComplete;
-    }
 
     // function to pass to the Form to:
     // Take  user input from GeneratorForm and store in state to pass to CharacterInfo
