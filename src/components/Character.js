@@ -43,7 +43,7 @@ const Character = (props) => {
         }).catch((error) => {
             alert(error)
         })
-    }, [])
+    }, [userRef])
 
     const handleClick = () => {
         setDeleteCharacter(true);
@@ -54,6 +54,7 @@ const Character = (props) => {
     const navigate = useNavigate()
     const handleDelete = () => {
         remove(userRef)
+        setLoaded(false)
         navigate("/characters");
     }
 
