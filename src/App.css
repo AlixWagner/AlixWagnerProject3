@@ -212,6 +212,13 @@ button.primary:active,
     background-color: #d36019;
     border: 3px solid #b34f36;
 }
+button.primary.disabled:hover,
+button.primary.disabled:focus,
+button.primary.disabled:active {
+    cursor: default;
+    background-color: #cc6f55;
+    border: 3px solid #cc6f55;
+}
 /* CHARACTER INFO SECTION */
 
 section .flexContainer {
