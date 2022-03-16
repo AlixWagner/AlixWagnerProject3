@@ -15,9 +15,11 @@ const CharacterRaceInfo = (props) => {
 
                 <div className="languages">
                     <h4>Languages</h4>
+                    <ul>
                     {
                         liFromArray(currentRace.languages)
                     }
+                    </ul>
                     <h5>Language Choices</h5>
                     {
                         currentRace.language_options
@@ -35,28 +37,29 @@ const CharacterRaceInfo = (props) => {
 
                 <div className="traits">
                     <h4>Traits</h4>
+                    <ul>
                     {
                         liFromArray(currentRace.traits)
                     }
+                    </ul>
                 </div>
 
                 <div className="proficiencies">
                     <h4>Proficiencies</h4>
-                    <ul>
                         {
                             currentRace.starting_proficiencies[0]
-                                ? currentRace.starting_proficiencies.map((proficiency) => {
+                            ? <ul className="baseProficiencies"> {currentRace.starting_proficiencies.map((proficiency) => {
                                     return (
                                         <li key={proficiency.index}>{proficiency.name}</li>
                                     )
-                                })
-                                : <p className="noChoice" >No Starting Proficiencies for {currentRace.name}</p>
+                                })}
+                            </ul>
+                            : <p className="noChoice" >No Starting Proficiencies for {currentRace.name}</p>
                         }
-                    </ul>
                     <h5>Proficiency Choices</h5>
                     {
                         currentRace.starting_proficiency_options
-                            ? <>
+                        ? <div className="proficiencyChoices" >
                                 <p className="chooseOptionLabel">Choose {currentRace.starting_proficiency_options.choose} From Below:</p>
                                 <ul className="choiceList">
                                     {
@@ -67,16 +70,17 @@ const CharacterRaceInfo = (props) => {
                                         })
                                     }
                                 </ul>
-                            </>
+                            </div>
                             : <p className="noChoice" >No Proficiency Choices for {currentRace.name}</p>
                     }
                 </div>
 
                 <div className="abilityBonuses">
                     <h4>Ability Bonuses</h4>
+                    <ul>
                     {
                         currentRace.ability_bonuses.map((ability) => {
-                            return(
+                            return (
                                 <li key={ability.ability_score.index}>
                                     <span className="bonusSpan">+{ability.bonus} </span>
                                     <span className="abilityType">{ability.ability_score.name} </span>
@@ -84,6 +88,7 @@ const CharacterRaceInfo = (props) => {
                             )
                         })
                     }
+                    </ul>
                     <h5>Ability Bonus Choices</h5>
                     {
                         currentRace.ability_bonus_options
