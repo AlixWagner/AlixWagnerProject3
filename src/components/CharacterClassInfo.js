@@ -4,15 +4,13 @@ const CharacterClassInfo = (props) => {
 
     const currentClass = props.infoObject;
     
-    console.log(currentClass)
-    
     return (
             <div className="classSection">
                 <h3>{currentClass.name}</h3>
                 <div className="basicClassInfo">
                     <p>Hit Dice: D{currentClass.hit_die}</p>
-
-                    <h4>Saving Throws</h4>
+                    
+                    <h4 className="savingThrows">Saving Throws:</h4>
                     <ul>
                         {
                             liFromArray(currentClass.saving_throws)
@@ -45,7 +43,7 @@ const CharacterClassInfo = (props) => {
                 </div>
                 
                 <div className="spellcasting">
-                    <h4>Spellcasting <span className="abilityType">{currentClass.spellcasting ? currentClass.spellcasting.spellcasting_ability.name : null } </span></h4>
+                    <h4>Spellcasting <span className="abilityType">{currentClass.spellcasting ? `(${currentClass.spellcasting.spellcasting_ability.name})` : null } </span></h4>
                     {
                         currentClass.spellcasting 
                             ? <ul> 
@@ -89,7 +87,6 @@ const CharacterClassInfo = (props) => {
                         }
                     </ul>
                     <h5>Equipment Choices</h5>
-                    <p>ALIX WAGNER YOU NEED TO FIX THIS STILL</p>
                     {
                         currentClass.starting_equipment_options.map((choice) => {
                             return (
@@ -99,16 +96,25 @@ const CharacterClassInfo = (props) => {
                                         {/* THIS INFO IS FUCKED  */}
                                         {/* Needs to be parsed more intricately because 
                                         FOR EXAMPLE: Rangers can choose between 2x shortswords or the option of 2 martial weapons of their choice THEREFORE sometimes option.equipment and sometimes option.equipment_category */}
-                                        {/* {
+                                        {
                                             choice.from.map((option) => {
-                                                return (
-                                                    <li key={option.equipment.index}>
-                                                        <span className="quantity">{option.quantity}x </span>
-                                                        {option.equipment.name}
-                                                    </li>
-                                                )
+                                                if (option.equipment) {
+                                                    return (
+                                                        <li key={option.equipment.index}>
+                                                            <span className="quantity">{option.quantity}x </span>
+                                                            {option.equipment.name}
+                                                        </li>
+                                                    )
+                                                } else {
+                                                    return (
+                                                        <li>ok</li>
+                                                        // <li key={option.equipment_option.from.equipment_category.index}>
+                                                        //     <span className="quantity">{option.equipment_option.choose}x </span><em>{option.equipment_option.from.equipment_category.name}</em>
+                                                        // </li>
+                                                    )
+                                                }
                                             })
-                                        } */}
+                                        }
                                     </ul>
                                 </>
                             )
