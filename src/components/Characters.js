@@ -10,27 +10,32 @@ function Characters(props) {
     }, [props.savedCharacters])
 
     return (
-        <div className="App">
+        <div className="characters">
 
             <header>
                 <div className='wrapper'>
                     <h1>Saved Characters</h1>
-                    <h2>Coming Soon</h2>
-                    {
-                        currentCharacters[0] 
-                        ? currentCharacters.map((character) => {
-                            return (
-                                <Link key={character.key} to={"/characters/" + character.key}>
-                                    <li >
-                                        <h4>{character.info.name}</h4>
-                                        <p>{character.info.alignment}</p>
-                                        <p>{character.info.race} {character.info.class}</p>
-                                    </li>
-                                </Link>
-                            )
-                        })
-                        : null
-                    }
+                    <p className='instructions'><span className='note'>Note:</span> click on any character to see more info</p>
+                    <ul className="characterList">
+                        {
+                            currentCharacters[0]
+                                ? currentCharacters.map((character) => {
+                                    return (
+                                        <Link className="characterBox" key={character.key} to={"/characters/" + character.key}>
+                                            <li className="character">
+                                                <h2>{character.info.name}</h2>
+                                                <div>
+                                                    <p>{character.info.alignment}</p>
+                                                    <p>{character.info.race} {character.info.class}</p>
+                                                </div>
+                                                
+                                            </li>
+                                        </Link>
+                                    )
+                                })
+                                : null
+                        }
+                    </ul>
                 </div>
             </header>
 

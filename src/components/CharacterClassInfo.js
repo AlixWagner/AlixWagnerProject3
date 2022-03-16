@@ -10,7 +10,7 @@ const CharacterClassInfo = (props) => {
                 <div className="basicClassInfo">
                     <p>Hit Dice: D{currentClass.hit_die}</p>
                     
-                    <h4 className="savingThrows">Saving Throws:</h4>
+                    <h5 className="savingThrows">Saving Throws:</h5>
                     <ul>
                         {
                             liFromArray(currentClass.saving_throws)
@@ -20,7 +20,7 @@ const CharacterClassInfo = (props) => {
 
                 <div className="proficiencies">
                         <h4>Proficiencies</h4>
-                    <ul>
+                    <ul className="baseProficiencies">
                         {
                             liFromArray(currentClass.proficiencies)
                         }
@@ -29,14 +29,14 @@ const CharacterClassInfo = (props) => {
                     {
                         currentClass.proficiency_choices.map((choice) => {
                             return (
-                                <>
+                                <div className="proficiencyChoices">
                                     <p className="chooseOptionLabel">Choose {choice.choose} From Below:</p>
                                     <ul className="choiceList">
                                         {
                                             liFromArray(choice.from)
                                         }
                                     </ul>
-                                </>
+                                </div>
                             )
                         })
                     }
@@ -46,11 +46,11 @@ const CharacterClassInfo = (props) => {
                     <h4>Spellcasting <span className="abilityType">{currentClass.spellcasting ? `(${currentClass.spellcasting.spellcasting_ability.name})` : null } </span></h4>
                     {
                         currentClass.spellcasting 
-                            ? <ul> 
+                            ? <div className="spellcastingAbilities"> 
                                 { currentClass.spellcasting.info.map((each) => {
                                     if (each.name === "Cantrips" || each.name === "Spellcasting Ability") {
                                         return (
-                                            <li>
+                                            <div>
                                                 <h5>{each.name}</h5>
                                                 <ul>
                                                     {
@@ -61,20 +61,20 @@ const CharacterClassInfo = (props) => {
                                                         })
                                                     }
                                                 </ul>
-                                            </li>
+                                            </div>
                                         )
                                     } else {
                                         return null
                                     }
                                 }) } 
-                            </ul>
+                            </div>
                             : <p className="noChoice">No Spellcasting for {currentClass.name} </p>
                     }
                 </div>
 
                 <div className="classEquipment">
                     <h4>Starting Equipment</h4>
-                    <ul>
+                    <ul className="baseEquipment">
                         {
                             currentClass.starting_equipment.map((equipment) => {
                                 return (
@@ -93,9 +93,6 @@ const CharacterClassInfo = (props) => {
                                 <>
                                     <p className="chooseOptionLabel">Choose {choice.choose} From Below:</p>
                                     <ul className="choiceList">
-                                        {/* THIS INFO IS FUCKED  */}
-                                        {/* Needs to be parsed more intricately because 
-                                        FOR EXAMPLE: Rangers can choose between 2x shortswords or the option of 2 martial weapons of their choice THEREFORE sometimes option.equipment and sometimes option.equipment_category */}
                                         {
                                             choice.from.map((option) => {
                                                 if (option.equipment) {
@@ -105,13 +102,28 @@ const CharacterClassInfo = (props) => {
                                                             {option.equipment.name}
                                                         </li>
                                                     )
-                                                } else {
+                                                } else if (option.equipment_option) {
                                                     return (
-                                                        <li>ok</li>
-                                                        // <li key={option.equipment_option.from.equipment_category.index}>
-                                                        //     <span className="quantity">{option.equipment_option.choose}x </span><em>{option.equipment_option.from.equipment_category.name}</em>
-                                                        // </li>
+                                                        <li key={option.equipment_option.from.equipment_category.index}>
+                                                            <span className="quantity">{option.equipment_option.choose}x </span><em>{option.equipment_option.from.equipment_category.name}</em>
+                                                        </li>
                                                     )
+                                                } else if (option.equipment_category) {
+                                                    return (
+                                                        <li key={option.equipment_category.index}>
+                                                            <em>{option.equipment_category.name}</em>
+                                                        </li>
+                                                    )
+                                                } else {
+                                                    const equipmentOptions = Array.from(option)
+                                                    equipmentOptions.map((option) => {
+                                                        return (
+                                                            <li key={option.equipment.index}>
+                                                                <span className="quantity">{option.quantity}x </span>
+                                                                {option.equipment.name}
+                                                            </li>
+                                                        )
+                                                    })
                                                 }
                                             })
                                         }

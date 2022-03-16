@@ -46,11 +46,11 @@ function App() {
           <div className='wrapper'>
             <Link className='imgContainer' to="/"><img src={logo} alt="d20 (20 sided die) logo" /></Link>
             <ul>
-              <li>
+              <li className='generator'>
                 <Link className='navButton' to="/">Character Generator</Link>
               </li>
               <li>
-                <Link className='navButton primary' to="/characters">Saved Characters</Link>
+              <Link className='navButton primary' to="/characters"><span className="at500">Saved </span>Characters</Link>
               </li>
             </ul>
           </div>

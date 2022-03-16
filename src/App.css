@@ -19,6 +19,7 @@ li {
     list-style: none;
 }
 a {
+    color: white;
     text-decoration: none;
 }
 img {
@@ -54,6 +55,9 @@ h5 {
     color: #c594aa;
     font-size: 1.1rem;
     font-weight: 400;
+}
+ul {
+    padding-left: 10px;
 }
 li, p {
     font-size: 0.9rem;
@@ -247,8 +251,16 @@ section .innerFlex {
 .alignmentSection h4 {
     margin: 5px 0;
 }
-/* CLASS SECTION */
-
+.flexContainer .buttonContainer {
+    display: flex;   
+    margin-top: 30px;
+    justify-content: flex-end;
+}
+.flexContainer .delete {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+/* CLASS AND RACE SECTION */
 .classSection .savingThrows {
     font-size: 1.1rem;
     font-weight: 400;
@@ -278,11 +290,160 @@ section .innerFlex {
     display: inline-block;
     width: 50%;
 }
-/* RACE SECTION */
-
-
+.proficiencies .baseProficiencies {
+    padding: 5px 0;
+    padding-left: 10px;
+}
+.proficiencies .proficiencyChoices {
+    padding: 0px 0 10px;
+}
+.proficiencies .proficiencyChoices p {
+    padding-bottom: 5px;
+    font-weight: 400;
+}
+.spellcastingAbilities {
+    padding: 10px 0;
+}
+.spellcastingAbilities p {
+    padding: 10px 0;
+}
+.classEquipment .baseEquipment {
+    padding: 10px 0 10px 10px;
+}
+.classEquipment ul {
+    padding: 2px 0 5px 10px;
+}
+.languages ul,
+.traits ul,
+.abilityBonuses ul {
+    padding: 5px 0 5px 10px
+}
+.languages li,
+.traits li,
+.abilityBonuses li,
+.proficiencies li {
+    padding: 3px 0
+}
 .chooseOptionLabel {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1rem;
     color: rgb(216, 186, 201);
+}
+.noChoice {
+    font-size: 0.8rem;
+    color: rgb(216, 186, 201);
+    padding-bottom: 5px;
+}
+
+/* CHARACTERS PAGE STYLING */
+.characterList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+}
+.characterList .characterBox {
+    width: calc(50% - 10px);
+    margin: 10px 0;
+}
+.characterBox li {
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 5px;
+    background-color: #81415c;
+    border: 3px solid #9e5c77;
+    transition: 0.6s;
+}
+.character h2 {
+    color: white;
+    font-size: 1.4rem;;
+    margin-bottom: 12px;
+}
+.character p {
+    color: #DFC8D2;
+    margin: 5px 0 0;
+}
+.characterBox:hover li,
+.characterBox:focus-within li,
+.characterBox:active li {
+    background-color: #6b344b;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1240px) {
+    .alignmentSection {
+        padding: 10px 10px 20px;
+    }
+    .proficiencies li {
+        width: 100%;
+    }
+}
+@media (max-width: 850px) {
+    section .innerFlex {
+        flex-wrap: wrap;
+    }
+    .classSection,
+    .raceSection{
+        width: 100%;
+    }
+    .raceSection {
+        margin-bottom: 20px;
+    }
+    .characterList .characterBox {
+        width: 100%;
+    }
+}
+@media (max-width: 700px) {
+    form .formSection {
+        flex-direction: column;
+    }
+    form .inputContainer {
+        width: 100%;
+    }
+    li.generator {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    section .wrapper {
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    form {
+        padding: 10px 25px;
+    }
+    section .flexContainer {
+        padding: 30px 20px;
+    }
+}
+@media (max-width: 500px) {
+    form .buttonContainer {
+        margin: 20px 0 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    form button {
+        width: 100%;
+        margin: 5px 0 10px;
+    }
+    .flexContainer .buttonContainer {
+        width: 100%;
+    }
+    .flexContainer .delete {
+        width: 100%;
+        flex-direction: column;
+    }
+    .flexContainer .delete button {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    .flexContainer .preDelete button {
+        width: 100%;
+        margin-left: 0;
+    }
+    .at500 {
+        display: none;
+    }
 }

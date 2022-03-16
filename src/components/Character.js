@@ -72,11 +72,11 @@ const Character = (props) => {
                         </div>
                         {
                             deleteCharacter
-                                ? <div className="buttonContainer">
+                                ? <div className="buttonContainer delete">
                                     <button onClick={ handleCancel }>Cancel</button>
                                     <button onClick={ handleDelete } className="primary">Delete Character</button>
                                 </div>
-                                : <div className="buttonContainer">
+                                : <div className="buttonContainer preDelete">
                                     <button onClick={handleClick} className="primary">Delete Character</button>
                                 </div>
                             }
