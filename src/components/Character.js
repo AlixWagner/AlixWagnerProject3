@@ -43,7 +43,7 @@ const Character = (props) => {
         }).catch((error) => {
             alert(error)
         })
-    }, [userRef])
+    }, [])
 
     const handleClick = () => {
         setDeleteCharacter(true);

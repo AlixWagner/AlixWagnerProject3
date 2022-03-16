@@ -4,14 +4,13 @@ const CharacterRaceInfo = (props) => {
 
     const currentRace = props.infoObject;
 
-    console.log(currentRace)
 
     return (
             <div className="raceSection">
                 <h3>{currentRace.name}</h3>
                 <div className="basicRaceInfo">
-                    <h5>Movement Speed</h5>
-                    <p>{currentRace.speed}ft</p>
+                    <p>Movement Speed: {currentRace.speed}ft</p>
+                
                 </div>
 
                 <div className="languages">
@@ -73,7 +72,7 @@ const CharacterRaceInfo = (props) => {
                     }
                 </div>
 
-                <div>
+                <div className="abilityBonuses">
                     <h4>Ability Bonuses</h4>
                     {
                         currentRace.ability_bonuses.map((ability) => {

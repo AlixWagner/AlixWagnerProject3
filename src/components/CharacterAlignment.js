@@ -2,7 +2,6 @@ const CharacterAlignment = (props) => {
 
     const currentAlignment = props.infoObject;
 
-    console.log(props.infoObject)
 
     return (
             <div className="basicCharacterSection">

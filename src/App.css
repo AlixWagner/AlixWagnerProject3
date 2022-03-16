@@ -41,8 +41,24 @@ h1 {
     font-size: 2.1rem;
 }
 h2 {
+    color: #ecb1a2;
     font-weight: 400;
     font-size: 1.8rem;
+}
+h4 {
+    color: #C3839E;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+h5 {
+    color: #c594aa;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+li, p {
+    font-size: 0.9rem;
+    line-height: 1.15rem;
+    letter-spacing: 0.02rem;
 }
 /* HEADER STYLING */
 nav .wrapper {
@@ -218,8 +234,8 @@ section .innerFlex {
 .classSection h3,
 .raceSection h3 {
     font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 20px;;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 .alignmentSection {
     padding: 10px 20px 20px;
@@ -229,7 +245,44 @@ section .innerFlex {
     max-width: 60ch
 }
 .alignmentSection h4 {
-    font-weight: 500;
     margin: 5px 0;
-    font-size: 1.2rem;
+}
+/* CLASS SECTION */
+
+.classSection .savingThrows {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 10px 0 5px;
+}
+.basicClassInfo, 
+.proficiencies, 
+.spellcasting,
+.classEquipment,
+.languages,
+.traits,
+.basicRaceInfo,
+.abilityBonuses {
+    padding: 10px 0;
+    border-top: 2px solid #81415c;
+}
+.basicClassInfo li {
+    display: inline-block;
+    padding-right: 15px;
+    font-weight: 300;
+}
+.proficiencies {
+    padding: 10px 0;
+    border-top: 2px solid #81415c;
+}
+.proficiencies li {
+    display: inline-block;
+    width: 50%;
+}
+/* RACE SECTION */
+
+
+.chooseOptionLabel {
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(216, 186, 201);
 }
