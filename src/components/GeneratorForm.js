@@ -110,53 +110,62 @@ const GeneratorForm = (props) => {
     // onSubmit={(e) => { props.onSubmit(e, characterName, characterClass, characterRace, characterAlignment) }}
 
     return (
-        <div className="wrapper">
-            <form>
-                <div className="formSection firstLine">
-                    <div className="inputContainer">
-                        <label htmlFor="characterName">Character Name</label>
-                        <input id="characterName" type="text" onChange={function (event) { setCharacterName(event.target.value) }} value={characterName}></input>
+        randomNameArray[0] 
+            ? <div className="wrapper">
+                <form>
+                    <div className="formSection firstLine">
+                        <div className="inputContainer">
+                            <label htmlFor="characterName">Character Name</label>
+                            <input id="characterName" type="text" onChange={function (event) { setCharacterName(event.target.value) }} value={characterName}></input>
+                        </div>
+
+                        <SelectInput
+                            id="characterAlignment"
+                            label="Alignment"
+                            options={alignmentArray}
+                            userInput={characterAlignment}
+                            setUserInput={setCharacterAlignment}
+                        />
                     </div>
 
-                    <SelectInput
-                        id="characterAlignment"
-                        label="Alignment"
-                        options={alignmentArray}
-                        userInput={characterAlignment}
-                        setUserInput={setCharacterAlignment}
-                    />
+                    <div className="formSection secondLine">
+                        <SelectInput
+                            id="characterClass"
+                            label="Class"
+                            options={characterClassArray}
+                            userInput={characterClass}
+                            setUserInput={setCharacterClass}
+                        />
+
+                        <SelectInput
+                            id="characterRace"
+                            label="Race"
+                            options={characterRaceArray}
+                            userInput={characterRace}
+                            setUserInput={setCharacterRace}
+                        />
+                    </div>
+
+
+                    <div className="buttonContainer">
+                        <button type="button" onClick={handleRandom} >
+                            Randomize
+                        </button>
+
+                        <button className="primary" onClick={handleSubmit}>
+                            Create Character
+                        </button>
+                    </div>
+                </form>
+            </div>
+            : <div className="loading">
+                <div className="lds-ellipsis">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
-
-                <div className="formSection secondLine">
-                    <SelectInput
-                        id="characterClass"
-                        label="Class"
-                        options={characterClassArray}
-                        userInput={characterClass}
-                        setUserInput={setCharacterClass}
-                    />
-
-                    <SelectInput
-                        id="characterRace"
-                        label="Race"
-                        options={characterRaceArray}
-                        userInput={characterRace}
-                        setUserInput={setCharacterRace}
-                    />
-                </div>
-
-
-                <div className="buttonContainer">
-                    <button type="button" onClick={handleRandom} >
-                        Randomize
-                    </button>
-
-                    <button className="primary" onClick={handleSubmit}>
-                        Create Character
-                    </button>
-                </div>
-            </form>
-        </div>
+            </div>
     )
 }
 
