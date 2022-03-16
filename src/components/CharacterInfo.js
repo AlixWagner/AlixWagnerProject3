@@ -5,9 +5,11 @@ import CharacterAlignment from "./CharacterAlignment";
 
 const CharacterInfo = (props) => {
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         props.saveCharacter(props.name, props.class, props.race, props.alignment);
-        alert("Character Saved!")
+        e.target.classList.add("disabled");
+        e.target.disabled = true;
+        e.target.innerText = "Character Saved"
     }
 
 
