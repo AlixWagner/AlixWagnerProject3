@@ -455,6 +455,24 @@ section .innerFlex {
     }
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+    padding: 10px;
+}
+footer a {
+    color: #AD718B;
+    text-decoration: underline;
+    text-decoration-color: #231118;
+    transition: 0.6s;
+}
+footer a:hover,
+footer a:focus,
+footer a:active {
+    text-decoration-color: #AD718B;
+}
+
 /* LOADING ANIMATION - from loading.io */
 .loading {
     width: 100%;

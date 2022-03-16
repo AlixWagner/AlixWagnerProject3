@@ -61,6 +61,10 @@ function App() {
         <Route path="/characters" element={<Characters savedCharacters={ characterList } />} />
         <Route path="/characters/:characterKey" element={<Character />} />
       </Routes>
+
+      <footer>
+        <a target="_blank" href="https://junocollege.com/">Created at Juno College</a>
+      </footer>
     </>
   )
 }
