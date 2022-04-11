@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDatabase, ref, get, remove } from "firebase/database";
-import firebase from "../firebase";
+import { app } from "../firebase";
 
 import apiCall from "./apiCall";
 import CharacterAlignment from "./CharacterAlignment";
@@ -20,7 +20,7 @@ const Character = (props) => {
     // get firebase key from URL 
     const { characterKey } = useParams();
 
-    const database = getDatabase(firebase)
+    const database = getDatabase(app)
     // Instead of referencing the whole database, we are now reference one specific node.
     const userRef = ref(database, `/${ characterKey }`)
     // The same syntax as we would use for retrieving the whole list as before!

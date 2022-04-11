@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { getDatabase, ref, get } from "firebase/database";
 import SelectInput from "./SelectInput.js";
 import randomFromArray from "./randomFromArray.js";
+import { secondary } from "../firebase.js";
 
 const GeneratorForm = (props) => {
     // setState for each input:
@@ -21,21 +23,37 @@ const GeneratorForm = (props) => {
     const [alignmentArray, setAlignmentArray] = useState([]);
     const [characterAlignment, setCharacterAlignment] = useState("placeholder");
 
+
+    const database = getDatabase(secondary)
+    // Instead of referencing the whole database, we are now reference one specific node.
+    const userRef = ref(database)
+
     // establish arrays from API:
     useEffect(() => {
         // random character names:
-        axios({
-            url: "https://api.fungenerators.com/name/generate",
-            params: {
-                api_key: "ZMLPKWMnz0eG28IhK5PuLAeF",
-                category: "elf",
-                limit: 200
-            }
-        }).then((returnedName) => {
-            setRandomNameArray(returnedName.data.contents.names)
-            setRandomName(returnedName.data.contents.names[5])
-        }).catch((error) => {
-            alert(error)
+        // axios({
+        //     url: "https://api.fungenerators.com/name/generate",
+        //     params: {
+        //         api_key: "ZMLPKWMnz0eG28IhK5PuLAeF",
+        //         category: "elf",
+        //         limit: 200
+        //     }
+        // }).then((returnedName) => {
+        //     setRandomNameArray(returnedName.data.contents.names)
+        //     setRandomName(returnedName.data.contents.names[5])
+        // }).catch((error) => {
+        //     alert(error)
+        // })
+        get(userRef).then((data) => {
+            const newData = data.val()
+            const newState = [];
+            for (let key in newData) {
+                // newState.push({ key: key, info: data[key] })
+                newState.push(newData[key])
+            };
+            const nameList = newState[0]
+            setRandomNameArray(nameList)
+            setRandomName(nameList[5])
         })
         // character classes:
         axios({
