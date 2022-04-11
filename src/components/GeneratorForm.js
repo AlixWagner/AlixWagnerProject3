@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SelectInput from "./SelectInput.js";
+import randomNames from "../assets/randomNames.js";
 import randomFromArray from "./randomFromArray.js";
 
 const GeneratorForm = (props) => {
@@ -24,19 +25,21 @@ const GeneratorForm = (props) => {
     // establish arrays from API:
     useEffect(() => {
         // random character names:
-        axios({
-            url: "https://api.fungenerators.com/name/generate",
-            params: {
-                api_key: "ZMLPKWMnz0eG28IhK5PuLAeF",
-                category: "elf",
-                limit: 200
-            }
-        }).then((returnedName) => {
-            setRandomNameArray(returnedName.data.contents.names)
-            setRandomName(returnedName.data.contents.names[5])
-        }).catch((error) => {
-            alert(error)
-        })
+        // axios({
+        //     url: "https://api.fungenerators.com/name/generate",
+        //     params: {
+        //         api_key: "ZMLPKWMnz0eG28IhK5PuLAeF",
+        //         category: "elf",
+        //         limit: 200
+        //     }
+        // }).then((returnedName) => {
+        //     setRandomNameArray(returnedName.data.contents.names)
+        //     setRandomName(returnedName.data.contents.names[5])
+        // }).catch((error) => {
+        //     alert(error)
+        // })
+        setRandomNameArray(randomNames)
+        setRandomName(randomNames[5])
         // character classes:
         axios({
             url: "https://www.dnd5eapi.co/api/classes",
