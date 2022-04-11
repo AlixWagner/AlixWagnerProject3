@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { getDatabase, ref, get } from "firebase/database";
 import SelectInput from "./SelectInput.js";
+import randomNames from "../assets/randomNames.js";
 import randomFromArray from "./randomFromArray.js";
-import { secondary } from "../firebase.js";
 
 const GeneratorForm = (props) => {
     // setState for each input:
@@ -23,11 +22,6 @@ const GeneratorForm = (props) => {
     const [alignmentArray, setAlignmentArray] = useState([]);
     const [characterAlignment, setCharacterAlignment] = useState("placeholder");
 
-
-    const database = getDatabase(secondary)
-    // Instead of referencing the whole database, we are now reference one specific node.
-    const userRef = ref(database)
-
     // establish arrays from API:
     useEffect(() => {
         // random character names:
@@ -44,17 +38,8 @@ const GeneratorForm = (props) => {
         // }).catch((error) => {
         //     alert(error)
         // })
-        get(userRef).then((data) => {
-            const newData = data.val()
-            const newState = [];
-            for (let key in newData) {
-                // newState.push({ key: key, info: data[key] })
-                newState.push(newData[key])
-            };
-            const nameList = newState[0]
-            setRandomNameArray(nameList)
-            setRandomName(nameList[5])
-        })
+        setRandomNameArray(randomNames)
+        setRandomName(randomNames[5])
         // character classes:
         axios({
             url: "https://www.dnd5eapi.co/api/classes",

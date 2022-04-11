@@ -1,5 +1,5 @@
 import { Route, Routes, Link } from 'react-router-dom';
-import { app } from "./firebase";
+import firebase from "./firebase";
 import { getDatabase, ref, onValue, push } from "firebase/database"
 import './App.css';
 import logo from "./assets/d20-icon-34405.png"
@@ -14,7 +14,7 @@ function App() {
   const [currentCharacter, setCurrentCharacter] = useState({})
 
   useEffect(() => {
-    const database = getDatabase(app);
+    const database = getDatabase(firebase);
     const dbRef = ref(database);
 
     onValue(dbRef, (response) => {
@@ -33,7 +33,7 @@ function App() {
   }
 
   const saveCharacter = () => {
-    const database = getDatabase(app);
+    const database = getDatabase(firebase);
     const dbRef = ref(database);
     push(dbRef, currentCharacter);
     setCurrentCharacter("");
